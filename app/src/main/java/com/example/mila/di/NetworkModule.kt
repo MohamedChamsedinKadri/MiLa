@@ -1,10 +1,17 @@
 package com.example.mila.di
 
-import com.example.mila.features.post.data.remote.PostsApiService
+import com.example.mila.features.posts.data.remote.PostsApiService
+import com.example.mila.features.posts.data.repository.PostsRepositoryImpl
+import com.example.mila.features.posts.domain.repository.Postsrepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 
@@ -43,12 +50,19 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
     @Provides
     @Singleton
-    fun providePostService(retrofit: Retrofit): PostsApiService {
+    fun providePostsApi(retrofit: Retrofit): PostsApiService {
         return retrofit.create(PostsApiService::class.java)
     }
-)
+
+    @Provides
+    @Singleton
+    fun providePostRepository(api : PostsApiService): Postsrepository {
+        return PostsRepositoryImpl(api)
+    }
+
 
 
 }

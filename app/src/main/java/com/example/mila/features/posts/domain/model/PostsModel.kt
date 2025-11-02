@@ -1,4 +1,4 @@
-package com.example.mila.features.domain.model
+package com.example.mila.features.posts.domain.model
 
 data class PostsModel (
     val userId: Int,
@@ -6,5 +6,6 @@ data class PostsModel (
     val title: String,
     val body: String
 )
+
 
 

@@ -1,10 +1,15 @@
-package com.example.mila.features.mvi
+package com.example.mila.features.posts.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.mila.features.posts.domain.usecase.GetPostsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jakarta.inject.Inject
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class PostsViewModel @Inject constructor(
@@ -16,22 +21,11 @@ class PostsViewModel @Inject constructor(
     val state: StateFlow<PostsState> = _state.asStateFlow()
 
 
-    private val _intent = MutableSharedFlow<PostsIntent>()
 
     init {
-        handleIntent()
         loadPosts()
     }
 
-    private fun handleIntent(){
-        viewModelScope.launch {
-            _intent.collect{ intent -> when(intent){
-                is PostsIntent.LoadPosts -> loadPosts()
-            }
-            }
-        }
-
-    }
 
     private fun loadPosts(){
         viewModelScope.launch {

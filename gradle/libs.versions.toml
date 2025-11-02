@@ -3,11 +3,12 @@
 activityCompose = "1.11.0"
 composeBom = "2025.10.01"
 androidxNavigation = "2.8.5"
+androidxLifecycle = "2.8.7"
 
 #mvvmState
 androidxHiltNavigationCompose = "1.2.0"
 lifecycleRuntimeKtx = "2.9.4"
-hiltVersion="2.57.1"
+hiltVersion="2.51.1"
 
 #data
 kotlinxSerializationJson = "1.8.0"
@@ -28,9 +29,15 @@ espressoCore = "3.7.0"
 kotlinxCoroutines = "1.10.1"
 
 [libraries]
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+
+androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
+androidx-lifecycle-runtimeTesting = { group = "androidx.lifecycle", name = "lifecycle-runtime-testing", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-kotlin-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
+
 
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 
@@ -71,4 +78,5 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt-android={id= "com.google.dagger.hilt.android", version.ref="hiltVersion"}
 ksp={id="com.google.devtools.ksp", version.ref="kspVersion"}

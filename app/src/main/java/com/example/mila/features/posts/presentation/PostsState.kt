@@ -1,6 +1,6 @@
-package com.example.mila.features.mvi
+package com.example.mila.features.posts.presentation
 
-import com.example.mila.features.domain.model.PostsModel
+import com.example.mila.features.posts.domain.model.PostsModel
 
 sealed class PostsState {
     object Loading : PostsState()
@@ -9,3 +9,10 @@ sealed class PostsState {
     data class Error(val message: String) : PostsState()
 
 }
+
+
+
+
+
+
+

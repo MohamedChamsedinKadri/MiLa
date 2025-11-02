@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias (libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
 }
 
@@ -62,10 +63,15 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.kotlin.serialization)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit.gson)
 
     implementation(libs.okhttp.logging)
 
     implementation(libs.androidx.hilt.navigation.compose)
+
+    implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(libs.androidx.lifecycle.viewModelCompose)
+    implementation(libs.androidx.lifecycle.runtimeTesting)
 
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.testing)
